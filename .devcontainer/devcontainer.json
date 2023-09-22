@@ -37,7 +37,8 @@
 						"aaron-bond.better-comments",
 						"xabikos.JavaScriptSnippets",
 						"formulahendry.auto-rename-tag",
-						"formulahendry.auto-close-tag"
+						"formulahendry.auto-close-tag",
+						"esbenp.prettier-vscode"
 					]
 			}
 	},

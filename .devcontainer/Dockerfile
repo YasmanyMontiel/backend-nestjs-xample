@@ -27,7 +27,9 @@ RUN curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | gpg -
 RUN echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_18.x nodistro main" | tee /etc/apt/sources.list.d/nodesource.list
 RUN apt-get update&&\
     apt-get install nodejs -y
+RUN npm install -g npm@10.1.0
 RUN npm install -g @nestjs/cli
+
 
 # Set the source and destination file for the PostgreSQL repository list
 RUN echo "deb https://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list
