@@ -43,11 +43,11 @@
 	},
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
-	"forwardPorts": [3000],
+	"forwardPorts": [8080, 5432],
 
 	"postCreateCommand": "sudo chmod a+x .devcontainer/dev_config/init_script_commands.sh && .devcontainer/dev_config/init_script_commands.sh",
-  	"postStartCommand": "npm start",
+  	//"postStartCommand": "npm run start:dev",
 	// Uncomment to connect as an existing user other than the container default. More info: https://aka.ms/dev-containers-non-root.
-	// "remoteUser": "devcontainer"
-	"containerUser": "node"
+	"remoteUser": "vscode"
+	//"containerUser": "vscode"
 }
