@@ -1,7 +1,9 @@
 import { Body, Controller, Get, Param, Post, Put } from '@nestjs/common';
+import { ApiTags, ApiParam } from '@nestjs/swagger';
 import { UsersService } from '../services/users.service';
 import { UserDTO, UserUpdateDTO } from '../dto/user.dto';
 
+@ApiTags('Users')
 @Controller('users')
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
@@ -17,11 +19,13 @@ export class UsersController {
     return await this.usersService.findUsers();
   }
 
+  @ApiParam({ name: 'id' })
   @Get(':id')
   public async findUserById(@Param('id') id: string) {
     return await this.usersService.findUserById(id);
   }
 
+  @ApiParam({ name: 'id' })
   @Put('edit/:id')
   public async updateUser(
     @Param('id') id: string,
@@ -30,6 +34,7 @@ export class UsersController {
     return await this.usersService.updateUser(body, id);
   }
 
+  @ApiParam({ name: 'id' })
   @Put('delete/:id')
   public async deleteUser(@Param('id') id: string) {
     return await this.usersService.deleteUser(id);
