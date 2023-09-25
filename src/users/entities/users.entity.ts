@@ -1,20 +1,32 @@
-import { BaseEntity, Column, Entity } from 'typeorm';
-import { IUSER } from 'src/interfaces/user.interface';
+import { Column, Entity, OneToMany } from 'typeorm';
+import { BaseEntity } from '../../config/base.entity';
+import { IUSER } from '../../interfaces/user.interface';
+import { ROLES } from '../../constants/roles';
+import { UsersProjectsEntity } from './usersProjects.entity';
 
 @Entity({ name: 'users' })
 export class UsersEntity extends BaseEntity implements IUSER {
   @Column()
   firstName: string;
+
   @Column()
   lastName: string;
+
   @Column()
   age: number;
+
   @Column({ unique: true })
   email: string;
+
   @Column({ unique: true })
   username: string;
+
   @Column()
   password: string;
-  @Column()
-  role: string;
+
+  @Column({ type: 'enum', enum: ROLES })
+  role: ROLES;
+
+  @OneToMany(() => UsersProjectsEntity, (usersProjects) => usersProjects.user)
+  projectsIncludes: UsersProjectsEntity[];
 }
