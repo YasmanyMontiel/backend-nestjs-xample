@@ -9,6 +9,7 @@ export class UsersController {
   @Post('registrer')
   public async registrerUser(@Body() body: UserDTO) {
     return await this.usersService.createUser(body);
+    //--> process.env.DB_HOST;
   }
 
   @Get('all')
