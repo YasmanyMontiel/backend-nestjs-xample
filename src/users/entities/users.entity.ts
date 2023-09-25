@@ -1,11 +1,12 @@
 import { Column, Entity, OneToMany } from 'typeorm';
-import { BaseEntity } from '../../config/base.entity';
-import { IUSER } from '../../interfaces/user.interface';
+import { Exclude } from 'class-transformer';
 import { ROLES } from '../../constants/roles';
+import { IUser } from '../../interfaces/user.interface';
+import { BaseEntity } from '../../config/base.entity';
 import { UsersProjectsEntity } from './usersProjects.entity';
 
 @Entity({ name: 'users' })
-export class UsersEntity extends BaseEntity implements IUSER {
+export class UsersEntity extends BaseEntity implements IUser {
   @Column()
   firstName: string;
 
@@ -21,6 +22,7 @@ export class UsersEntity extends BaseEntity implements IUSER {
   @Column({ unique: true })
   username: string;
 
+  @Exclude()
   @Column()
   password: string;
 
