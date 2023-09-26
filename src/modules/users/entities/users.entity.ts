@@ -1,8 +1,8 @@
 import { Column, Entity, OneToMany } from 'typeorm';
 import { Exclude } from 'class-transformer';
-import { ROLES } from '../../constants/roles';
-import { IUser } from '../../interfaces/user.interface';
-import { BaseEntity } from '../../config/base.entity';
+import { ROLES } from '../../../constants/roles';
+import { IUser } from '../interfaces/user.interface';
+import { BaseEntity } from '../../../config/base.entity';
 import { UsersProjectsEntity } from './usersProjects.entity';
 
 @Entity({ name: 'users' })

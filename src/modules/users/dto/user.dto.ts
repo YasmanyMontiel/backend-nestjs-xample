@@ -9,7 +9,7 @@ import {
 import { ApiProperty } from '@nestjs/swagger';
 import { ACCESS_LEVEL, ROLES } from 'src/constants/roles';
 import { UsersEntity } from '../entities/users.entity';
-import { ProjectsEntity } from 'src/projects/entities/projects.entity';
+import { ProjectsEntity } from 'src/modules/projects/entities/projects.entity';
 
 export class UserDTO {
   @ApiProperty()
