@@ -10,9 +10,16 @@ import { ApiProperty } from '@nestjs/swagger';
 import { ACCESS_LEVEL, ROLES } from 'src/constants/roles';
 import { UsersEntity } from '../entities/users.entity';
 import { ProjectsEntity } from 'src/modules/projects/entities/projects.entity';
+import { IUser } from '../interfaces/user.interface';
 
-export class UserDTO {
-  @ApiProperty()
+export class UserDTO implements IUser {
+  @ApiProperty({
+    type: String,
+    format: 'string',
+    pattern: '.+',
+    minLength: 1,
+    maxLength: 256,
+  })
   @IsNotEmpty()
   @IsString()
   firstName: string;
@@ -28,7 +35,7 @@ export class UserDTO {
   age: number;
 
   @ApiProperty()
-  @IsNotEmpty()
+  // @IsNotEmpty()
   @IsString()
   email: string;
 
@@ -53,16 +60,6 @@ export class UserUpdateDTO {
   @IsOptional()
   @IsString()
   firstName: string;
-
-  @ApiProperty()
-  @IsOptional()
-  @IsString()
-  lastName: string;
-
-  @ApiProperty()
-  @IsOptional()
-  @IsNumber()
-  age: number;
 
   @ApiProperty()
   @IsOptional()
@@ -96,8 +93,9 @@ export class UserToProjectDTO {
   @IsUUID()
   project: ProjectsEntity;
 
-  @ApiProperty()
+  @ApiProperty({ enum: ACCESS_LEVEL })
+  type: ACCESS_LEVEL;
   @IsNotEmpty()
-  @IsEnum(ACCESS_LEVEL)
+  //@IsEnum(ACCESS_LEVEL)
   accessLevel: ACCESS_LEVEL;
 }
