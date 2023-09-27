@@ -1,0 +1,27 @@
+# @name tcsend00
+POST http://127.0.0.1:3000/api/auth/login HTTP/1.1
+x-api-key: testdocker
+accept: application/json
+Content-Type: application/json
+
+{
+  "username": "yasmany.montiel",
+  "password": "1234"
+}
+
+###
+# @name tcsend01
+POST http://127.0.0.1:3000/api/users/registrer HTTP/1.1
+x-api-key: testdocker
+accept: application/json
+Content-Type: application/json
+
+{
+  "firstName": "Yasmany",
+  "lastName": "Montiel Rivera",
+  "age": 36,
+  "email": "yasmontiel87@gmail.com",
+  "username": "yasmany.montiel",
+  "password": "1234",
+  "role": ""
+}
