@@ -1,7 +1,6 @@
 import {
   IsEnum,
   IsNotEmpty,
-  IsNumber,
   IsOptional,
   IsString,
   IsUUID,
@@ -11,31 +10,11 @@ import { ACCESS_LEVEL, ROLES } from 'src/constants/roles';
 import { UsersEntity } from '../entities/users.entity';
 import { ProjectsEntity } from 'src/modules/projects/entities/projects.entity';
 import { IUser } from '../interfaces/user.interface';
+import { BaseDto } from '../../../common/base.dto';
 
-export class UserDTO implements IUser {
-  @ApiProperty({
-    type: String,
-    format: 'string',
-    pattern: '.+',
-    minLength: 1,
-    maxLength: 256,
-  })
-  @IsNotEmpty()
-  @IsString()
-  firstName: string;
-
+export class UserDTO extends BaseDto implements IUser {
   @ApiProperty()
   @IsNotEmpty()
-  @IsString()
-  lastName: string;
-
-  @ApiProperty()
-  @IsNotEmpty()
-  @IsNumber()
-  age: number;
-
-  @ApiProperty()
-  // @IsNotEmpty()
   @IsString()
   email: string;
 
